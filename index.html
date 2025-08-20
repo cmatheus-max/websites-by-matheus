@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Matheus — I Build Modern Websites</title>
+  <meta name="description" content="I build clean, fast websites for small businesses and creators. Get a modern site designed and launched quickly with AI‑powered workflows." />
+  <meta property="og:title" content="I Build Modern Websites" />
+  <meta property="og:description" content="Clean, fast websites for small businesses & creators." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.png" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b1220; /* deep navy */
+      --panel: #0f172a; /* slate-900 */
+      --muted: #94a3b8; /* slate-400 */
+      --text: #e2e8f0; /* slate-200 */
+      --brand: #0ea5e9; /* sky-500 */
+      --brand-2: #22d3ee; /* cyan-400 */
+      --ring: rgba(34,211,238,.35);
+      --card: #0b132a;
+      --ok: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(2,6,23,.35);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: var(--text); background: radial-gradient(1200px 800px at 80% -10%, rgba(14,165,233,.25), transparent 60%), radial-gradient(1000px 600px at -10% 10%, rgba(34,211,238,.18), transparent 60%), var(--bg); }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1120px, 92%); margin: 0 auto; }
+
+    /* Nav */
+    .nav { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(1.2) blur(8px); background: rgba(11,18,32,.6); border-bottom: 1px solid rgba(148,163,184,.15); }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px; }
+    .logo { width:34px; height:34px; border-radius:10px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: 0 6px 18px rgba(14,165,233,.45); display:grid; place-items:center; font-weight:800; color:#00131a; }
+    .nav-links { display:flex; gap:18px; align-items:center; }
+    .nav-links a { padding:8px 12px; border-radius:10px; color: var(--muted); font-weight:600; }
+    .nav-links a:hover { background: rgba(148,163,184,.12); color: #fff; }
+    .cta-btn { padding:10px 14px; border-radius:12px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:#00131a; font-weight:800; box-shadow: 0 10px 20px rgba(14,165,233,.3); }
+
+    /* Hero */
+    .hero { padding: 80px 0 60px; }
+    .hero-grid { display:grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items:center; }
+    .eyebrow { display:inline-flex; gap:8px; align-items:center; font-weight:700; color:#a5f3fc; background: rgba(14,165,233,.12); border:1px solid rgba(14,165,233,.35); padding:6px 10px; border-radius:999px; }
+    .eyebrow .dot { width:8px; height:8px; border-radius:999px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: 0 0 0 6px rgba(14,165,233,.16); }
+    h1 { font-size: clamp(32px, 6vw, 56px); line-height: 1.05; margin: 14px 0 14px; font-weight: 800; }
+    .lead { font-size: clamp(16px, 2.2vw, 20px); color: var(--muted); max-width: 55ch; }
+    .actions { display:flex; gap:12px; margin-top: 24px; flex-wrap:wrap; }
+    .btn { padding:12px 16px; border-radius:12px; font-weight:700; border:1px solid rgba(148,163,184,.2); background: #0d182b; color:#e2e8f0; }
+    .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:#00131a; border: none; box-shadow: 0 14px 28px rgba(14,165,233,.35); }
+    .hero-card { background: linear-gradient(180deg, rgba(148,163,184,.06), rgba(148,163,184,.02)); border: 1px solid rgba(148,163,184,.16); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+    .stats { display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; margin-top: 12px; }
+    .stat { background:#0a1426; border:1px solid rgba(148,163,184,.14); border-radius:14px; padding:14px; text-align:center; }
+    .stat b { font-size: 22px; display:block; }
+
+    /* Sections */
+    section { padding: 70px 0; }
+    .section-title { font-size: clamp(24px, 4.5vw, 34px); margin: 0 0 14px; font-weight:800; }
+    .section-lead { color: var(--muted); max-width: 60ch; }
+
+    /* Services */
+    .cards { margin-top: 28px; display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { background: linear-gradient(180deg, rgba(148,163,184,.06), rgba(148,163,184,.02)); border:1px solid rgba(148,163,184,.16); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); display:flex; flex-direction:column; gap:10px; }
+    .chip { display:inline-block; font-size:12px; color:#0a1220; font-weight:800; background: linear-gradient(135deg, var(--brand), var(--brand-2)); border-radius:999px; padding:6px 10px; }
+    .card p { color: var(--muted); }
+
+    /* Portfolio */
+    .grid-portfolio { margin-top: 28px; display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .work { border-radius: 16px; overflow:hidden; border:1px solid rgba(148,163,184,.16); background:#0a1426; }
+    .work-thumb { aspect-ratio: 16 / 10; background: linear-gradient(135deg, rgba(14,165,233,.25), rgba(34,211,238,.18)); display:grid; place-items:center; color:#00131a; font-weight:900; font-size: 22px; letter-spacing:.6px; }
+    .work-body { padding: 14px; display:flex; align-items:center; justify-content:space-between; gap:8px; }
+    .work small { color: var(--muted); }
+
+    /* Process */
+    .steps { margin-top: 24px; display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .step { background:#0a1426; border:1px solid rgba(148,163,184,.16); border-radius:16px; padding:16px; }
+    .step b { display:block; margin-bottom:6px; }
+
+    /* Contact */
+    .contact { display:grid; grid-template-columns: 1.1fr .9fr; gap: 24px; margin-top: 20px; }
+    form { background: linear-gradient(180deg, rgba(148,163,184,.06), rgba(148,163,184,.02)); border:1px solid rgba(148,163,184,.16); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+    label { display:block; font-weight:600; margin: 8px 0 6px; }
+    input, select, textarea { width:100%; padding:12px; border-radius:12px; border:1px solid rgba(148,163,184,.2); background:#0b162b; color: var(--text); outline: none; }
+    input:focus, select:focus, textarea:focus { border-color: var(--brand-2); box-shadow: 0 0 0 6px var(--ring); }
+    textarea { min-height: 120px; resize: vertical; }
+    .form-row { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .submit { margin-top: 12px; width: 100%; padding: 14px; border:none; border-radius:12px; font-weight:800; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:#00131a; cursor: pointer; box-shadow: 0 14px 28px rgba(14,165,233,.35); }
+    .note { color: var(--muted); font-size: 14px; margin-top: 10px; }
+
+    /* Footer */
+    footer { padding: 28px 0 40px; color: var(--muted); border-top: 1px solid rgba(148,163,184,.14); margin-top: 40px; }
+    .socials { display:flex; gap: 12px; }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid { grid-template-columns: 1fr; }
+      .cards, .grid-portfolio, .steps { grid-template-columns: 1fr 1fr; }
+      .contact { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px){
+      .nav-inner { flex-wrap: wrap; }
+      .cards, .grid-portfolio, .steps { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand" aria-label="Home">
+        <div class="logo">M</div>
+        <span>Matheus • Web Designer</span>
+      </a>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#contact" class="cta-btn">Get a Quote</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> Websites that win customers</span>
+        <h1>I build <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">modern, fast websites</span> for small businesses & creators</h1>
+        <p class="lead">I design and launch clean, mobile‑first sites — powered by AI for speed and great copy — so you can look pro and convert more visitors.</p>
+        <div class="actions">
+          <a class="btn primary" href="#contact">Start a Project</a>
+          <a class="btn" href="#work">See Recent Work</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>1–2 weeks</b><small>typical turnaround</small></div>
+          <div class="stat"><b>$299+</b><small>starter packages</small></div>
+          <div class="stat"><b>SEO‑ready</b><small>fast & accessible</small></div>
+        </div>
+      </div>
+      <div class="hero-card" aria-hidden="true">
+        <img alt="Mockup of responsive website" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='900' height='620'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='%230ea5e9'/><stop offset='1' stop-color='%2322d3ee'/></linearGradient></defs><rect width='100%' height='100%' rx='24' ry='24' fill='%230a1426'/><rect x='24' y='24' width='852' height='80' rx='12' fill='url(%23g)' opacity='.85'/><rect x='24' y='124' width='540' height='180' rx='16' fill='%23111e36'/><rect x='24' y='324' width='260' height='180' rx='16' fill='%23111e36'/><rect x='304' y='324' width='260' height='180' rx='16' fill='%23111e36'/><rect x='584' y='124' width='292' height='380' rx='16' fill='%23111e36'/></svg>"/>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT / SERVICES -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">Services</h2>
+      <p class="section-lead">From idea to launch, I handle design, build, and deployment. Every project includes mobile‑first design, fast load times, on‑page SEO, and simple editing.</p>
+      <div class="cards">
+        <div class="card">
+          <span class="chip">Landing Pages</span>
+          <h3>High‑converting pages</h3>
+          <p>Perfect for campaigns and product launches. Clear messaging, strong visuals, and analytics baked in.</p>
+        </div>
+        <div class="card">
+          <span class="chip">Business Sites</span>
+          <h3>Small business websites</h3>
+          <p>Modern 3–5 page sites with services, hours, maps, and contact. Easy to update and maintain.</p>
+        </div>
+        <div class="card">
+          <span class="chip">E‑commerce</span>
+          <h3>Simple online stores</h3>
+          <p>Starter shops with secure checkout and product pages. Get selling quickly without complexity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="container">
+      <h2 class="section-title">Recent Work (Demo)</h2>
+      <p class="section-lead">Don’t have client projects yet? No problem. These demos show the quality and style you’ll get. I can tailor any design to your brand.</p>
+      <div class="grid-portfolio">
+        <article class="work">
+          <div class="work-thumb">Restaurant Demo</div>
+          <div class="work-body"><div>
+            <b>BlueWave Bistro</b>
+            <small>Menu • Reservations • Map</small>
+          </div>
+            <a class="btn" href="#" aria-label="View Restaurant Demo">View</a>
+          </div>
+        </article>
+        <article class="work">
+          <div class="work-thumb">Fitness Studio Demo</div>
+          <div class="work-body"><div>
+            <b>Pulse Fitness</b>
+            <small>Classes • Trainers • Booking</small>
+          </div>
+            <a class="btn" href="#" aria-label="View Fitness Demo">View</a>
+          </div>
+        </article>
+        <article class="work">
+          <div class="work-thumb">Creator Portfolio Demo</div>
+          <div class="work-body"><div>
+            <b>Creator Kit</b>
+            <small>Projects • About • Contact</small>
+          </div>
+            <a class="btn" href="#" aria-label="View Portfolio Demo">View</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="container">
+      <h2 class="section-title">Simple, fast process</h2>
+      <p class="section-lead">We keep projects lightweight and focused. Most sites launch in 1–2 weeks.</p>
+      <div class="steps">
+        <div class="step"><b>1. Brief</b><span class="muted">Quick call to define goals, pages, and style.</span></div>
+        <div class="step"><b>2. Design</b><span class="muted">Homepage concept + copy drafted with AI.</span></div>
+        <div class="step"><b>3. Build</b><span class="muted">Responsive site, forms, analytics, SEO.</span></div>
+        <div class="step"><b>4. Launch</b><span class="muted">Deploy to your domain + handoff video.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Get a free quote</h2>
+      <p class="section-lead">Tell me a little about your project. I’ll reply within 24 hours with next steps and a simple price estimate.</p>
+      <div class="contact">
+        <form id="quote-form" autocomplete="on">
+          <!-- If you use Netlify, add: name="quote" method="POST" data-netlify="true" -->
+          <div class="form-row">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required>
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@email.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="company">Business / Brand</label>
+              <input id="company" name="company" type="text" placeholder="Company or project name">
+            </div>
+            <div>
+              <label for="budget">Budget</label>
+              <select id="budget" name="budget">
+                <option value="undecided">Undecided</option>
+                <option value="299-499">$299–$499 (starter)</option>
+                <option value="500-999">$500–$999</option>
+                <option value="1000+">$1,000+</option>
+              </select>
+            </div>
+          </div>
+          <label for="message">Project details</label>
+          <textarea id="message" name="message" placeholder="What do you need? How many pages? Any examples you like?" required></textarea>
+          <input type="hidden" name="_subject" value="New Website Inquiry" />
+          <button class="submit" type="submit">Send Request</button>
+          <p class="note">Prefer email? <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></p>
+          <p id="form-status" class="note" role="status" aria-live="polite"></p>
+        </form>
+        <div>
+          <div class="card">
+            <span class="chip">What you get</span>
+            <ul>
+              <li>✔ Custom design, mobile‑first</li>
+              <li>✔ AI‑assisted copywriting</li>
+              <li>✔ Basic SEO + analytics</li>
+              <li>✔ Friendly support + quick edits</li>
+            </ul>
+          </div>
+          <div style="height:12px"></div>
+          <div class="card">
+            <span class="chip">Availability</span>
+            <p>Booking <b>2 new projects</b> this month. Reserve your slot.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+      <small>© <span id="year"></span> Matheus — All rights reserved.</small>
+      <div class="socials">
+        <a href="https://instagram.com/" aria-label="Instagram">Instagram</a>
+        <span aria-hidden="true">•</span>
+        <a href="https://www.linkedin.com/" aria-label="LinkedIn">LinkedIn</a>
+        <span aria-hidden="true">•</span>
+        <a href="https://github.com/" aria-label="GitHub">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for internal anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const href = a.getAttribute('href');
+        if(href.length > 1){
+          e.preventDefault();
+          document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Lightweight form handling: tries Formspree; falls back to mailto
+    const form = document.getElementById('quote-form');
+    const status = document.getElementById('form-status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = 'Sending…';
+
+      // Replace with your Formspree endpoint or Netlify handling
+      const FORMSPREE_ENDPOINT = 'https://formspree.io/f/your-id'; // <- put your ID here
+
+      const data = Object.fromEntries(new FormData(form).entries());
+      try {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        if (res.ok) {
+          status.textContent = 'Thanks! I\'ll get back to you within 24 hours.';
+          form.reset();
+        } else {
+          throw new Error('Non‑200 response');
+        }
+      } catch (err) {
+        // Fallback: open email with prefilled body
+        const body = encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\nBusiness: ${data.company}\nBudget: ${data.budget}\n\nProject details:\n${data.message}`);
+        window.location.href = `mailto:hello@yourdomain.com?subject=New Website Inquiry&body=${body}`;
+        status.textContent = 'Opening your email client…';
+      }
+    });
+  </script>
+</body>
+</html>
+
